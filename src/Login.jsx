@@ -64,7 +64,7 @@ const Login= () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://registration.test/api/login', {
+      const response = await fetch('https://expo.nepalpashmina.org.np/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

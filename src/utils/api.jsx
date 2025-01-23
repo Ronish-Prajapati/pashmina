@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://registration.test/api', // Update with your actual base URL
+  baseURL: 'https://expo.nepalpashmina.org.np/api', // Update with your actual base URL
 });
 
 // Add token to headers if it exists
