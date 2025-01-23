@@ -105,23 +105,23 @@ const Modal = ({ isModalOpen, formData, closeModal, registrationId }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div
             id="modalContent"
-            className="p-12 relative"
+            className="sm:p-12 p-8 relative"
           >
             <div id="modalBody">
-             <img className="object-contain mx-auto lg:w-8/12 sm:10/12 w-11/12" src="/modal.jpeg" alt="" />
-             <p id="name" className="absolute top-[50%] left-[50%] text-center sm:top-[44%] sm:left-[50%] transform -translate-x-1/2 -translate-y-1/2 text-[#841412] text-xl sm:text-2xl font-bold">
+             <img className="object-contain mx-auto lg:w-8/12 sm:10/12 w-full" src="/modal.jpeg" alt="" />
+             <p id="name" className="absolute top-[44%] left-[50%] text-center sm:top-[44%] sm:left-[50%] transform -translate-x-1/2 -translate-y-1/2 text-[#841412] text-md sm:text-2xl font-bold">
                 {formData.first_name}{" "}
                 {formData.middle_name && ` ${formData.middle_name}`}{" "}
                 {formData.last_name}
               </p>
 
               {/* Registration ID Below "You are Visitor Number:" */}
-              <p id="reg_id" className="absolute top-[67%] left-[50%] sm:top-[65%] sm:left-[50%] transform -translate-x-1/2 -translate-y-1/2 text-gray-800 text-2xl font-semibold">
+              <p id="reg_id" className="absolute top-[63%] left-[50%] sm:top-[65%] sm:left-[50%] transform -translate-x-1/2 -translate-y-1/2 text-gray-800 text-md sm:text-2xl font-semibold">
                 {registrationId}
               </p>
             </div>
             <button
-              className="bg-[#841412] absolute top-4 right-32 text-white px-2 rounded-full w-8 h-8 mt-4 self-center btn"
+              className="bg-[#841412] absolute lg:top-4 lg:right-32 top-0 right-3 text-white px-2 rounded-full w-8 h-8 mt-4 self-center btn"
               onClick={closeModal}
             >
               &#10005;
