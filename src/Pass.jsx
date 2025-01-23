@@ -39,7 +39,7 @@ const Pass = () => {
 
     try {
       const response = await fetch(
-        "https://expo.nepalpashmina.org.np/api/registrations",
+        "https://expo.nepalpashmina.org.np/registration/public/api/registrations ",
         {
           method: "POST",
           headers: {
@@ -87,13 +87,13 @@ const Pass = () => {
       designation: "",
     });
     setIsModalOpen(false);
-    navigate("/"); // Navigate to another route if needed
+    
   };
 
   return (
     <>
       <div className="flex justify-center items-center w-full bg-slate-200">
-        <div className="rounded-md w-full lg:w-[70%] h-screen md:h-full border-2  border-gray-400 bg-white my-4 p-1">
+        <div className="rounded-md w-full lg:w-[80%]  border-2  border-gray-400 bg-white my-4 mx-1 p-1">
           <div className="">
             <div className="flex flex-col">
               <img className="rounded-md" src="/FINAL-BANNER.jpg" alt="" />

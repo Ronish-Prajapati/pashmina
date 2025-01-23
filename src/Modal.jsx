@@ -81,7 +81,7 @@ const Modal = ({ isModalOpen, formData, closeModal, registrationId }) => {
       }
 
       #name {
-        top: 40%;
+        top: 43%;
 
       }
       #reg_id {
@@ -108,7 +108,7 @@ const Modal = ({ isModalOpen, formData, closeModal, registrationId }) => {
             className="sm:p-12 p-8 relative"
           >
             <div id="modalBody">
-             <img className="object-contain mx-auto lg:w-8/12 sm:10/12 w-full" src="/modal.jpeg" alt="" />
+             <img className="object-contain mx-auto lg:w-8/12 sm:10/12 w-full" src="/modal.jpg" alt="" />
              <p id="name" className="absolute top-[44%] left-[50%] text-center sm:top-[44%] sm:left-[50%] transform -translate-x-1/2 -translate-y-1/2 text-[#841412] text-md sm:text-2xl font-bold">
                 {formData.first_name}{" "}
                 {formData.middle_name && ` ${formData.middle_name}`}{" "}
