@@ -4,10 +4,10 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
 import Logo from "../public/pashmina.png"; // Import your logo
 
-const Modal = ({ isModalOpen, formData, closeModal,registrationId }) => {
+const Modal = ({ isModalOpen, formData, closeModal, registrationId }) => {
   const captureAndDownload = () => {
     const modalElement = document.getElementById("modalContent");
-    
+
     html2canvas(modalElement).then((canvas) => {
       const imgData = canvas.toDataURL("image/jpeg");
       const link = document.createElement("a");
@@ -62,95 +62,39 @@ const Modal = ({ isModalOpen, formData, closeModal,registrationId }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div
             id="modalContent"
-            className="bg-[#cbf0ff] sm:w-[50%] sm:h-[100%] w-[90%] h-[100%] rounded-lg shadow-lg flex flex-col justify-center p-6"
+            className="bg-[url('/modal.jpg')] bg-cover bg-center sm:w-[50%] sm:h-[100%] w-[90%] h-[100%] rounded-lg shadow-lg flex flex-col justify-center p-6"
           >
-            <h2 className="text-3xl font-bold mb-2 text-[#022c40] text-center">
-              PARTICIPATION NOTE
-            </h2>
-            <div className="flex-grow"> 
-              
-              <p className="my-2 text-[#841412] text-3xl font-bold">
-                {formData.first_name}{" "}
-                {formData.middle_name && ` ${formData.middle_name}`}{" "}
-                {formData.last_name}
-              </p>
-              <p className="text-sm font-bold text-[#022c40] mb-2 ">
-                Thank you for your participation.Please bring a copy of this confirmation or have it
-                accessible on your device during the event for verification
-                purposes
-              </p>
-              <div className="flex sm:flex-row flex-col sm:justify-normal justify-center gap-4 pt-4 w-[40%]">
-                <img src={Logo} alt="pashmina" />
-                <img src="" />
-              </div>
-            </div>
-            <div className="w-[100%] h-[2px] bg-[#841412]"></div>
-            <div className="py-5">
-              <span className=" text-[#022c40] text-lg font-bold px-1 py-1 rounded text-center">
-                <h1 className="text-xl font-bold">Your OTP: {registrationId} </h1>
-              </span>
-            </div>
-            <div className="w-[100%] h-[2px] bg-[#841412]"></div>
-            <div className="flex sm:flex-row flex-col items-center justify-between p-4 rounded-lg shadow-md">
-              {/* Date Section */}
-              <div className="flex items-center space-x-4 sm:mb-0 mb-2 location">
-                <FaRegCalendarAlt className="w-6 h-6 text-blue-700" />
-                <div>
-                  <div className="flex space-x-2">
-                    <span className="bg-blue-700 text-white text-sm font-bold px-1 py-1 rounded">
-                      10
-                    </span>
-                    <span className="bg-blue-700 text-white text-sm font-bold px-1 py-1 rounded">
-                      11
-                    </span>
-                    <span className="bg-blue-700 text-white text-sm font-bold px-1 py-1 rounded">
-                      12
-                    </span>
-                    <span className="text-sm font-bold text-gray-700 pl-2">
-                      MAGH 2081
-                    </span>
-                    <br />
-                  </div>
-                  <span className="text-sm font-bold text-gray-700 pl-2">
-                    (23RD – 25TH JAN 2025)
-                  </span>
-                </div>
-              </div>
+           <p className="absolute  top-[43%] left-[50%]   text-center sm:top-[40%] sm:left-[50%] transform -translate-x-1/2 text-[#841412] text-xl sm:text-2xl font-bold">
+    {formData.first_name}{" "}
+    {formData.middle_name && ` ${formData.middle_name}`}{" "}
+    {formData.last_name}
+  </p>
 
-              {/* Location Section */}
-              <div className="flex items-center space-x-4 sm:mt-0 mt-2 location">
-                <ImLocation2 className="w-6 h-6 text-blue-700" />
-                <div>
-                  <p className="text-sm font-bold text-gray-700 pl-2">
-                    BHRIKUTIMANDAP EXHIBITION HALL
-                  </p>
-                  <p className="text-sm font-bold text-gray-700">
-                    10:00 AM – 5:00 PM
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-row justify-center gap-4">
-            <button
-              className="bg-blue-500 text-white px-6 py-2 rounded mt-2 self-center btn"
-              onClick={captureAndDownload}
-            >
-              Download as JPG
-            </button>
-            <button
-              className="bg-green-500 text-white px-4 py-2 rounded mt-2 self-center btn"
-              onClick={printModal}
-            >
-              Print
-            </button>
-            </div>
-            <button
+  {/* Registration ID Below "You are Visitor Number:" */}
+  <p className="absolute top-[67%] left-[50%] sm:top-[80%] sm:left-[50%] transform -translate-x-1/2 text-gray-800 text-2xl font-semibold">
+    {registrationId}
+  </p>
+
+            {/* <div className="flex flex-row justify-center gap-4">
+              <button
+                className="bg-blue-500 text-white px-6 py-2 rounded mt-2 self-center btn"
+                onClick={captureAndDownload}
+              >
+                Download as JPG
+              </button>
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded mt-2 self-center btn"
+                onClick={printModal}
+              >
+                Print
+              </button>
+            </div> */}
+            {/* <button
               className="bg-[#841412] text-white px-6 py-2 rounded mt-4 self-center btn"
               onClick={closeModal}
             >
               Close
-            </button>
-           
+            </button> */}
           </div>
         </div>
       )}
