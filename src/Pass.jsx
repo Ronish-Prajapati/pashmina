@@ -87,7 +87,7 @@ const Pass = () => {
             last_name: "",
             address: "",
             country: "",
-            phone_number: "",
+            phone: "",
             email: "",
             organization: "",
             designation: "",
@@ -116,7 +116,7 @@ const Pass = () => {
               </div>
               <div className="grid lg:grid-cols-3 lg:gap-8 sm:grid-cols-2 grid-cols-1 gap-6 mb-4">
                 <div>
-                  <label>First Name</label>
+                  <label>First Name *</label>
                   <input
                     className="rounded-md w-full py-4 px-4 bg-white shadow-slate-300 shadow-md text-black mt-2"
                     type="text"
@@ -140,7 +140,7 @@ const Pass = () => {
                   />
                 </div>
                 <div>
-                  <label>Last Name</label>
+                  <label>Last Name *</label>
                   <input
                     className="rounded-md w-full py-4 px-4 bg-white shadow-slate-300 shadow-md text-black mt-2"
                     type="text"
@@ -148,13 +148,14 @@ const Pass = () => {
                     name="last_name"
                     value={formData.last_name}
                     onChange={handleChange}
+                    required
                   />
                   {errors.last_name && <p style={{ color: "red" }}>{errors.last_name[0]}</p>}
                 </div>
               </div>
               <div className="grid lg:gap-8 sm:grid-cols-2 grid-cols-1 gap-6 mb-4">
                 <div>
-                  <label>Address</label>
+                  <label>Address *</label>
                   {/* Add other input fields similarly */}
                   <input
                     className="rounded-md w-full py-4 px-4 mt-2 bg-white shadow-slate-300 shadow-md text-black"
@@ -168,7 +169,7 @@ const Pass = () => {
                   {errors.address && <p style={{ color: "red" }}>{errors.address[0]}</p>}
                 </div>
                 <div>
-                  <label>Country</label>
+                  <label>Country *</label>
                   {/* Country */}
                   <input
                     className="rounded-md w-full py-4 px-4 mt-2 bg-white shadow-slate-300 shadow-md text-black"
@@ -184,7 +185,7 @@ const Pass = () => {
               </div>
               <div className="grid lg:gap-8 sm:grid-cols-2 grid-cols-1 gap-6 mb-4">
                 <div>
-                  <label>Email</label>
+                  <label>Email *</label>
                   {/* Email */}
                   <input
                     className="rounded-md w-full py-4 px-4 mt-2 bg-white shadow-slate-300 shadow-md text-black"
@@ -193,21 +194,23 @@ const Pass = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    required
                   />
                   {responseMessage.email && <p style={{ color: "red" }}>{responseMessage.email[0]}</p>}
                 </div>
                 <div>
-                  <label>Phone Number</label>
+                  <label>Phone Number *</label>
                   {/* Phone Number */}
                   <input
                     className="rounded-md w-full py-4 px-4 mt-2 bg-white shadow-slate-300 shadow-md text-black"
                     type="text"
                     placeholder=""
                     name="phone"
-                    value={formData.phone_number}
+                    value={formData.phone}
                     onChange={handleChange}
+                    required
                   />
-                  {errors.phone_number && <p style={{ color: "red" }}>{errors.phone_number[0]}</p>}
+                  {errors.phone && <p style={{ color: "red" }}>{errors.phone[0]}</p>}
                 </div>
               </div>
 
