@@ -108,7 +108,7 @@ const Modal = ({ isModalOpen, formData, closeModal, registrationId }) => {
             className="sm:p-12 p-8 relative"
           >
             <div id="modalBody">
-             <img className="object-contain mx-auto lg:w-8/12 sm:10/12 w-full" src="/modal.jpg" alt="" />
+             <img className="object-contain mx-auto lg:w-8/12 sm:10/12 w-full" src="/modal.jpeg" alt="" />
              <p id="name" className="absolute top-[44%] left-[50%] text-center sm:top-[44%] sm:left-[50%] transform -translate-x-1/2 -translate-y-1/2 text-[#841412] text-md sm:text-2xl font-bold">
                 {formData.first_name}{" "}
                 {formData.middle_name && ` ${formData.middle_name}`}{" "}
@@ -128,6 +128,13 @@ const Modal = ({ isModalOpen, formData, closeModal, registrationId }) => {
             </button>
 
             <div className="flex flex-row justify-center gap-4">
+              <a href="https://nepalpashmina.org.np/">
+                <button
+                className="bg-[#841412] text-white px-4 py-2 rounded mt-4 self-center btn"
+                   >
+                  Our Official Website
+                 </button>
+              </a>
               <button
                 className="bg-blue-500 text-white px-6 py-2 rounded mt-4 self-center btn"
                 onClick={captureAndDownload}
