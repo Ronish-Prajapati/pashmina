@@ -39,7 +39,7 @@ const Pass = () => {
 
     try {
       const response = await fetch(
-        "https://expo.nepalpashmina.org.np/registration/public/api/registrations ",
+        "https://backend.event.nepalpashmina.org.np/public/api/registrations",
         {
           method: "POST",
           headers: {
