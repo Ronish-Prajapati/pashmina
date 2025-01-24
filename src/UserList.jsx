@@ -70,7 +70,7 @@ const UserList = () => {
       key: "/addattendee",
       icon: <HomeOutlined style={{ color: "" }} />,
       label: "Add Attendee",
-      link: "/register",
+      link: "/",
     },
     
     // {
@@ -222,7 +222,7 @@ const UserList = () => {
           User List
         </h1>
 
-        <div className="overflow-x-auto overflow-y-auto">
+        <div className="overflow-x-auto overflow-y-auto m-2 bg-slate-200">
           <table className="table-auto w-full border border-gray-500 shadow-lg bg-white rounded-lg">
             <thead className="bg-gray-100">
               <tr>

@@ -48,17 +48,24 @@ const Pass = () => {
           body: JSON.stringify(formData),
         }
       );
+      console.log(response)
       const responseData = await response.json();
+     
       if (response.ok) {
-        const registrationId = responseData.registration_id;
+        
 
-        setRegistrationId(registrationId || "N/A");
+        setRegistrationId(responseData.registration_id|| "N/A");
+    
+        setResponseMessage([]);
+        setIsModalOpen(true);
       } else {
         if (responseData.errors) {
-          setErrors(responseData.errors);
+          setErrors(responseData.error);
+          console.log(responseData)
+
         } else {
           setResponseMessage(
-            data.message || "There was an error with your submission."
+            responseData.message || "There was an error with your submission."
           );
         }
         setRegistrationId("");
@@ -66,8 +73,9 @@ const Pass = () => {
 
       // Reset form and show modal on success
 
-      setIsModalOpen(true);
+     
     } catch (err) {
+       console.log(err)
       setErrors(err.message);
     } finally {
       setIsSubmitting(false);
@@ -194,8 +202,8 @@ const Pass = () => {
                       onChange={handleChange}
                       required
                     />
-                    {responseMessage.email && (
-                      <p style={{ color: "red" }}>{responseMessage.email[0]}</p>
+                    {responseMessage && (
+                      <p style={{ color: "red" }}>{responseMessage}</p>
                     )}
                   </div>
                   <div>
