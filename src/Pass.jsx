@@ -3,7 +3,6 @@ import { SlArrowLeft } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Pop from "./Modal.jsx";
-import { addToDB, getAllFromDB, clearDB } from "./indexedDb";
 import Logo from "../public/pashmina.png";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { ImLocation2 } from "react-icons/im";
@@ -37,52 +36,52 @@ const Pass = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     if (navigator.onLine) {
-      // Submit to API if online
-      try {
-        const response = await fetch(
-          "https://backend.event.nepalpashmina.org.np/public/api/registrations",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          }
-        );
+    try {
+      const response = await fetch(
+        "https://backend.event.nepalpashmina.org.np/public/api/registrations",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      console.log(response)
+      const responseData = await response.json();
+     
+      if (response.ok) {
+        
 
-        const responseData = await response.json();
+        setRegistrationId(responseData.registration_id|| "N/A");
+    
+        setResponseMessage([]);
+        setIsModalOpen(true);
+      } else {
+        if (responseData.errors) {
+          setErrors(responseData.error);
+          console.log(responseData)
 
-        if (response.ok) {
-          setRegistrationId(responseData.registration_id || "N/A");
-          setResponseMessage([]);
-          setIsModalOpen(true);
         } else {
-          setErrors(responseData.errors || {});
           setResponseMessage(
             responseData.message || "There was an error with your submission."
           );
         }
-      } catch (err) {
-        console.error(err);
-        setErrors({ general: "An error occurred. Please try again later." });
-      } finally {
-        setIsSubmitting(false);
+        setRegistrationId("");
       }
-    } else {
-      // Save to IndexedDB if offline
-      try {
-        await addToDB({ ...formData, timestamp: new Date().toISOString() });
-        alert("You are offline. Your data has been saved locally.");
-      } catch (err) {
-        console.error("Error saving to IndexedDB:", err);
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-  };
 
+      // Reset form and show modal on success
+
+     
+    } catch (err) {
+       console.log(err)
+      setErrors(err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+  };
   const syncData = async () => {
     const offlineData = await getAllFromDB();
 
@@ -122,6 +121,21 @@ const Pass = () => {
     };
   }, []);
 
+  const closeModal = () => {
+    setFormData({
+      first_name: "",
+      middle_name: "",
+      last_name: "",
+      address: "",
+      country: "",
+      phone: "",
+      email: "",
+      organization: "",
+      designation: "",
+    });
+    setIsModalOpen(false);
+    
+  };
 
   return (
     <>
